@@ -62,12 +62,15 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%; /* to move rotation origin to the end of the right. default 50%.  */
+      transform: rotate(90deg); /* make div/hand verticle */
+      transition: all 0.5s; /* timing of clock secondhand */
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); /* use dev tools to edit/copy cubic-bezier */
     }
 
   </style>
 
   <script>
-
 
   </script>
 </body>
