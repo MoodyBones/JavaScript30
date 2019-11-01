@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Scoped CSS Variables and JS</title>
+
     <link
       href="https://fonts.googleapis.com/css?family=Raleway:300,700&display=swap"
       rel="stylesheet"
     />
+
   </head>
   <body>
     <h2>Update CSS Variables with <span class="hl">JS</span></h2>
@@ -74,7 +76,7 @@
       .hl {
         color: var(--base);
       }
-
+      
       img {
         width: 60%;
         height: auto;
@@ -95,13 +97,16 @@
     <script>
       const inputs = document.querySelectorAll('.controls input')
 
+
       function handleChange() {
         const suffix = this.dataset.sizing || ''
         // this adds the px suffix for spacing and blur || and nothing for the colour picker
+
         document.documentElement.style.setProperty(
           `--${this.name}`,
           this.value + suffix
         )
+
         // console.log(this.name)
         // console.log(suffix)
       }
@@ -109,6 +114,7 @@
       inputs.forEach(input => input.addEventListener('change', handleChange))
       inputs.forEach(input => input.addEventListener('mousemove', handleChange))
       console.log('Made by Mel! Cheers Wes Bos!! #JavaScript30')
+
 
     </script>
   </body>
