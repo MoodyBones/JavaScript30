@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Scoped CSS Variables and JS</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,700&display=swap"
+      rel="stylesheet"
+    />
+
   </head>
   <body>
     <h2>Update CSS Variables with <span class="hl">JS</span></h2>
@@ -31,39 +37,52 @@
       />
 
       <label for="base">Base Color</label>
-      <input id="base" type="color" name="base" value="#ffc600" />
+      <input id="base" type="color" name="base" value="#f74366" />
     </div>
 
-    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" />
+    <img
+      src="https://images.pexels.com/photos/2983140/pexels-photo-2983140.png?auto=compress&cs=tinysrgb&h=750&w=1260"
+      width="500"
+      height="375"
+    />
 
     <style>
       :root {
-        --base: #ffc600;
+        --font: 'Raleway', sans-serif;
+        --base: #f74366;
         --spacing: 10px;
         --blur: 10px;
       }
+      /*
+      misc styles, nothing to do with CSS variables
+    */
 
-      img {
-        padding: var(--spacing);
-        background: var(--base);
-        filter: blur(var(--blur));
+      body {
+        text-align: center;
+        background: white;
+        color: black;
+        font-family: var(--font);
+        font-weight: 300;
+        font-size: 20px;
+      }
+
+      h2 {
+        font-weight: 300;
+        font-size: 3rem;
+        padding: 5rem 0;
+        border-bottom: 1px solid lightgrey;
       }
 
       .hl {
         color: var(--base);
       }
-
-      /*
-        misc styles, nothing to do with CSS variables
-      */
-
-      body {
-        text-align: center;
-        background: #193549;
-        color: white;
-        font-family: 'helvetica neue', sans-serif;
-        font-weight: 100;
-        font-size: 50px;
+      
+      img {
+        width: 60%;
+        height: auto;
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
       }
 
       .controls {
@@ -78,17 +97,25 @@
     <script>
       const inputs = document.querySelectorAll('.controls input')
 
-      function handleUpdate() {
-        const suffix = this.dataset.sizing || '' // this adds the px suffix for spacing and blur || and nothing for the colour picker
-        // console.log(suffix)
+
+      function handleChange() {
+        const suffix = this.dataset.sizing || ''
+        // this adds the px suffix for spacing and blur || and nothing for the colour picker
+
         document.documentElement.style.setProperty(
           `--${this.name}`,
           this.value + suffix
         )
+
+        // console.log(this.name)
+        // console.log(suffix)
       }
 
-      inputs.forEach(input => input.addEventListener('change', handleUpdate))
-      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+      inputs.forEach(input => input.addEventListener('change', handleChange))
+      inputs.forEach(input => input.addEventListener('mousemove', handleChange))
+      console.log('Made by Mel! Cheers Wes Bos!! #JavaScript30')
+
+
     </script>
   </body>
 </html>
